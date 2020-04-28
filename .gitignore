@@ -1,6 +1,6 @@
 ngrok
 __pycache__/*
 *.sqlite
-*.txt
+auth.txt
 covid/
 covid/
