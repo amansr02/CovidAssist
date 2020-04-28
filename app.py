@@ -29,8 +29,7 @@ def message_parser(incoming_msg):
     resp = MessagingResponse()
     msg = resp.message()
     if "information" in incoming_msg or "Information" in incoming_msg:
-        x = incoming_msg.split()
-        agent.country=x[-1]
+        agent.country=country_parser(incoming_msg)
         date = agent.get_latest_date()
         date = date.text
         data = agent.get_latest_country_data()
@@ -46,6 +45,11 @@ def message_parser(incoming_msg):
         msg.body("I didnot understand, could you mention 'information' or 'chart' please!")
 
     return str(resp)
+
+def country_parser(incoming_msg):
+    x = incoming_msg.split()
+    country = pycountry.countries.search_fuzzy(x)[0].alpha_3
+    return country
 
 if __name__ == '__main__':
     app.run()
