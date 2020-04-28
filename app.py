@@ -48,7 +48,7 @@ def message_parser(incoming_msg):
 
 def country_parser(incoming_msg):
     x = incoming_msg.split()
-    country = pycountry.countries.search_fuzzy(x)[0].alpha_3
+    country = pycountry.countries.search_fuzzy(x[-1])[0].alpha_3
     return country
 
 if __name__ == '__main__':
